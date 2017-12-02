@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import constants from 'constants'
+import {Router} from '../routes'
 
 const COLOR = constants.STYLE_VARS.colors
 
@@ -43,7 +44,7 @@ const Points = styled.div`
 
 
 export default ({name, points}) => <HeaderContainer>
-    <Barrilete src={"../../static/images/aerolab-logo.svg"}/>
+    <Barrilete onClick={() => Router.pushRoute("/")} src={"../../static/images/aerolab-logo.svg"}/>
     <UserData>
         {name}
         <Points>{points} <img src="../../static/images/icons/coin.svg" alt="Points" className="coin"/></Points>

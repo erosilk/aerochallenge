@@ -28,11 +28,15 @@ export default class extends React.Component {
         }
     }
 
+    componentDidMount() {
+        Router.prefetchRoute("/product")
+    }
+
 
     render() {
         return (
             <Layout name={this.props.userInfo.name} points={this.props.userInfo.points}>
-                <Header background={"../static/images/header-x1.png"} title={"Electronics"}/>
+                <Header background={"../../static/images/header-x1.png"} title={"Electronics"}/>
                 <ItemContainer>
                     {this.props.products.map(product =>
                         <ProductItem key={product._id}

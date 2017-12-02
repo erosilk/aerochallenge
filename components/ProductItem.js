@@ -78,6 +78,9 @@ const Item = styled.div`
       border-bottom: 1px solid ${COLOR.grey};
         height: 190px;
         width: 100%;
+            display: flex;
+    justify-content: center;
+    align-items: center;
     }
     .text {
       margin: 0;
