@@ -292,6 +292,7 @@ export default ({ name, points, children }) => (
       }
       * {
         font-family: 'Source Sans Pro';
+        color: ${COLOR.darkGreyText};
       }
     `}</style>
   </Layout>

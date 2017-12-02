@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import constants from 'constants';
+import DiscreteButton from "./DiscreteButton"
 
 const COLOR = constants.STYLE_VARS.colors;
+
 
 const Container = styled.div`
   display: flex;
@@ -20,21 +22,7 @@ const Container = styled.div`
     width: 178px;
     margin: 0 auto;
   }
-  span {
-    text-align: center;
-    letter-spacing: 1px;
-    border: 1px solid gray;
-    width: 120px;
-    padding: 0.1em;
-    border-radius: 4px;
-    margin: 0 auto;
-    transition: 0.15s ease all;
-    cursor: pointer;
-    &:hover {
-      color: white;
-      background-color: gray;
-    }
-  }
+  
 `;
 
 export default ({ redirect }) => {
@@ -42,7 +30,7 @@ export default ({ redirect }) => {
     <Container>
       <img src="../../static/images/lost.png" alt="" />
       <h1>Page not found!</h1>
-      <span onClick={redirect}>GO TO HOME</span>
+      <DiscreteButton onClick={redirect}>GO TO HOME</DiscreteButton>
     </Container>
   );
 };

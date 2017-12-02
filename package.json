@@ -4,9 +4,9 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "dev": "next dev",
+        "dev": "node server",
         "build": "next build",
-        "start": "next start"
+        "start": "NODE_ENV=production node server"
     },
     "author": "Micael Robles",
     "license": "ISC",

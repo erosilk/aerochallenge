@@ -11,7 +11,6 @@ export default class Product extends React.Component {
   static async getInitialProps({ query, req, res }) {
     const products = await api.getProducts();
     const userInfo = await api.getUser();
-    console.log(query);
 
     const product = products.filter(product => product._id === query.id);
 
@@ -47,8 +46,11 @@ export default class Product extends React.Component {
         alert(
           'There has been an issue with your purchase. Suspicious behavior. NSA is on their way.',
         );
+        return;
       }
+      Router.pushRoute("/success?id="+this.props.product._id)
     } else {
+        api.addPoints(5000)
     }
   }
 
