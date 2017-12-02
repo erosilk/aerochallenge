@@ -16,6 +16,7 @@ const Barrilete = styled.img`
   height: 36px;
   width: 38.77px;
   margin-left: 5vw;
+  cursor: pointer;
 `
 
 const UserData = styled.div`

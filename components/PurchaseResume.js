@@ -9,12 +9,11 @@ const ResumeContainer = styled.div`
   padding: 2em;
   display: flex;
   flex-direction: column;
-      width: 90%;
-    max-width: 460px;
-    height: 220px;
-    justify-content: space-around;
-    margin: auto;
-        margin-bottom: 1em;
+  width: 90%;
+  max-width: 460px;
+  height: 220px;
+  justify-content: space-around;
+  margin-bottom: 1em;
 `;
 
 const ResumeItem = styled.div`

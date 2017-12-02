@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import constants from '../constants';
 
-
 const COLOR = constants.STYLE_VARS.colors;
 const BREAKPOINT = constants.STYLE_VARS.breakpoints;
 
@@ -18,11 +17,21 @@ const PointsBadge = styled.div`
   color: ${COLOR.white};
   .coin {
     margin-right: -7px;
-    margin-bottom: -3px;
+    margin-bottom: -2px;
     margin-left: 2px;
+    width: 20px;
+  }
+  @media ${BREAKPOINT.smartphoneBig} {
+    .coin {
+      margin-right: -7px;
+      margin-bottom: -3px;
+      margin-left: 2px;
+      width: auto;
+    }
   }
 `;
 
+// language=LESS
 const Item = styled.div`
   display: flex;
   position: relative;
@@ -66,6 +75,7 @@ const Item = styled.div`
     position: absolute;
     top: 1em;
     right: 1em;
+    width: 30px;
   }
 
   @media ${BREAKPOINT.smartphoneBig} {
@@ -76,11 +86,14 @@ const Item = styled.div`
     .img {
       border: none;
       border-bottom: 1px solid ${COLOR.grey};
-        height: 190px;
-        width: 100%;
-            display: flex;
-    justify-content: center;
-    align-items: center;
+      height: 190px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .buy {
+      width: auto;
     }
     .text {
       margin: 0;
@@ -115,7 +128,7 @@ export default ({ product, pointsNeeded, onClick }) => (
       <img
         src="../static/images/icons/buy-blue.svg"
         alt="Points"
-        className="buy"
+        className="buy badge"
       />
     )}
   </Item>
