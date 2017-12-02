@@ -43,10 +43,13 @@ const Item = styled.div`
   max-width: 340px;
   margin: auto;
   width: 100%;
-  transition: 0.3s ease box-shadow;
+  transition: 0.3s ease box-shadow, 0.3s ease transform;
+  cursor: pointer;
+  
   box-shadow: -1px 2px 7px 0px #00000014;
   &:hover {
     box-shadow: -1px 2px 7px 0px #00000044;
+    transform: scale(1.03);
   }
   .text {
     display: flex;

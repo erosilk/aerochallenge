@@ -4,6 +4,7 @@ import constants from 'constants';
 const COLOR = constants.STYLE_VARS.colors;
 
 const ResumeContainer = styled.div`
+  position: relative;
   background: #ffffff;
   border: 1px solid rgba(255, 118, 0, 0.36);
   padding: 2em;
@@ -31,9 +32,21 @@ const ResumeItem = styled.div`
   }
 `;
 
+const Warning = styled.div`
+  position: absolute;
+  top:0;left:0;
+  width: 100%;
+  padding: 0.3em;
+  color: white;
+  background-color: ${COLOR.darkGrey80};
+  text-align: center;
+  
+`
+
 export default ({ userPoints, costOfProduct, canBuy }) => {
   return (
     <ResumeContainer>
+        {!canBuy ? <Warning>Oops! You don't have enough points for this item</Warning> : null}
       <ResumeItem>
         <span>AVAILABLE POINTS</span>
         <span>{userPoints}</span>

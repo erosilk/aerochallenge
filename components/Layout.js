@@ -290,7 +290,7 @@ export default ({ name, points, children }) => (
       body {
         margin: 0;
       }
-      * {
+      p, span {
         font-family: 'Source Sans Pro';
         color: ${COLOR.darkGreyText};
       }

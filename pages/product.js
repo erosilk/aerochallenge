@@ -48,9 +48,9 @@ export default class Product extends React.Component {
         );
         return;
       }
-      Router.pushRoute("/success?id="+this.props.product._id)
+      Router.pushRoute('/success?id=' + this.props.product._id);
     } else {
-        api.addPoints(5000)
+      api.addPoints(5000);
     }
   }
 
@@ -67,12 +67,26 @@ export default class Product extends React.Component {
             userPoints={user.points}
             costOfProduct={product.cost}
           />
-          <RedeemButton
-            onClick={() => {
-              this._redeemAction(canBuy, product);
-            }}
-            canBuy={canBuy}
-          />
+          <div>
+            {canBuy ? (
+              <img
+                src="https://media.giphy.com/media/uFtywzELtkFzi/giphy.gif"
+                alt=""
+              />
+            ) : (
+              <img
+                src="https://media.giphy.com/media/3o6UB5RrlQuMfZp82Y/giphy.gif"
+                alt=""
+              />
+            )}
+
+            <RedeemButton
+              onClick={() => {
+                this._redeemAction(canBuy, product);
+              }}
+              canBuy={canBuy}
+            />
+          </div>
         </ProductLayout>
       </Layout>
     );
