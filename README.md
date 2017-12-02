@@ -11,4 +11,5 @@
 	npm run dev
 
 ### Start production server
+	npm run build
 	npm run start
