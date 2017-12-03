@@ -6,7 +6,7 @@ import Header from 'components/Header';
 import SuccessContainer from 'components/SuccessContainer';
 
 
-export default class Product extends React.Component {
+export default class Success extends React.Component {
     static async getInitialProps({ query, req, res }) {
         const products = await api.getProducts();
         const userInfo = await api.getUser();

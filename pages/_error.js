@@ -4,7 +4,7 @@ import { Router } from '../routes';
 import Layout from 'components/Layout';
 import Page404 from 'components/Page404';
 
-export default class Product extends React.Component {
+export default class Error extends React.Component {
   static async getInitialProps({ query, req, res }) {
     const userInfo = await api.getUser();
 
