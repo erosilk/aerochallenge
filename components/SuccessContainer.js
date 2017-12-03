@@ -38,7 +38,7 @@ export default ({ product }) => {
             <div className="img">
                 <img src={product.img.hdUrl} alt=""/>
             </div>
-            <DiscreteButton color={COLOR.orange} redirect={() => Router.pushRoute("/")}>BROWSE MORE PRODUCTS</DiscreteButton>
+            <DiscreteButton color={COLOR.orange} onClick={() => Router.pushRoute("/")}>BROWSE MORE PRODUCTS</DiscreteButton>
         </SuccessContainer>
     );
 };

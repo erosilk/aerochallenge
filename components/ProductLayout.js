@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import constants from 'constants';
 
-const COLOR = constants.STYLE_VARS.colors;
 const BREAKPOINT = constants.STYLE_VARS.breakpoints;
 
 const Container = styled.div`
@@ -18,10 +17,10 @@ const Container = styled.div`
   }
   @media ${BREAKPOINT.tabletLand} {
     flex-direction: row;
-    align-items: flex-start;
+    align-items: flex-end;
     img {
       display: block;
-      height: 160px;
+      height: 155px;
       width: 280px;
       margin-bottom: 1em;
     }

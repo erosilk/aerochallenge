@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import constants from 'constants';
 
 const COLOR = constants.STYLE_VARS.colors;
+const BREAKPOINT = constants.STYLE_VARS.breakpoints;
+
 
 const ResumeContainer = styled.div`
   position: relative;
@@ -15,6 +17,9 @@ const ResumeContainer = styled.div`
   height: 220px;
   justify-content: space-around;
   margin-bottom: 1em;
+  @media ${BREAKPOINT.tabletLand} {
+    margin: 0;
+  }
 `;
 
 const ResumeItem = styled.div`
@@ -34,19 +39,21 @@ const ResumeItem = styled.div`
 
 const Warning = styled.div`
   position: absolute;
-  top:0;left:0;
+  top: 0;
+  left: 0;
   width: 100%;
   padding: 0.3em;
   color: white;
   background-color: ${COLOR.darkGrey80};
   text-align: center;
-  
-`
+`;
 
 export default ({ userPoints, costOfProduct, canBuy }) => {
   return (
     <ResumeContainer>
-        {!canBuy ? <Warning>Oops! You don't have enough points for this item</Warning> : null}
+      {!canBuy ? (
+        <Warning>Oops! You don't have enough points for this item</Warning>
+      ) : null}
       <ResumeItem>
         <span>AVAILABLE POINTS</span>
         <span>{userPoints}</span>

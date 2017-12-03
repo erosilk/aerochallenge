@@ -19,6 +19,6 @@ const ButtonStyle = styled.span`
   }
 `;
 
-export default ({ color, redirect, children }) => {
-  return <ButtonStyle color={color ? color : "gray"} onClick={redirect}>{children}</ButtonStyle>;
+export default ({ color, onClick, children }) => {
+  return <ButtonStyle color={color ? color : "gray"} onClick={onClick}>{children}</ButtonStyle>;
 };
