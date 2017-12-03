@@ -3,6 +3,8 @@ import constants from 'constants';
 import api from '../helpers/api';
 import { Router } from '../routes';
 
+import Head from 'next/head';
+
 import Layout from 'components/Layout';
 import Header from 'components/Header';
 import ProductItem from 'components/ProductItem';
@@ -55,6 +57,9 @@ export default class extends React.Component {
 
     return (
       <Layout name={user.name} points={user.points}>
+        <Head>
+          <title>Aerolab Coding Challenge</title>
+        </Head>
         <Header
           background={'../../static/images/header-x1.png'}
           title={'Electronics'}

@@ -23,11 +23,15 @@ export default class MyDocument extends Document {
                 />
                 {this.props.styleTags}
                 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
-                <link rel="apple-touch-icon" sizes="180x180" href="/static/images/icons/apple-touch-icon.png"/>
-                <link rel="icon" type="image/png" sizes="32x32" href="/static/images/icons/favicon-32x32.png"/>
-                <link rel="icon" type="image/png" sizes="16x16" href="/static/images/icons/favicon-16x16.png"/>
-                <link rel="manifest" href="/static/images/icons/manifest.json"/>
-                <link rel="shortcut icon" href="/static/images/icons/favicon.ico"/>
+
+                <link rel="apple-touch-icon" sizes="180x180" href="/static/images/favicon/apple-touch-icon.png"/>
+                <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon/favicon-32x32.png"/>
+                <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon/favicon-16x16.png"/>
+                <link rel="manifest" href="/static/images/favicon/manifest.json"/>
+                <link rel="mask-icon" href="/static/images/favicon/safari-pinned-tab.svg" color="#ff6b00"/>
+                <link rel="shortcut icon" href="/static/images/favicon/favicon.ico"/>
+                <meta name="msapplication-config" content="/static/images/favicon/browserconfig.xml"/>
+                <meta name="theme-color" content="#ffffff"/>
 
                 <meta name="format-detection" content="telephone=no"/>
                 <meta httpEquiv="x-rim-auto-match" content="none"/>

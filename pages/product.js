@@ -1,6 +1,8 @@
 import api from '../helpers/api';
 import { Router } from '../routes';
 
+import Head from 'next/head';
+
 import Layout from 'components/Layout';
 import Header from 'components/Header';
 import PurchaseResume from 'components/PurchaseResume';
@@ -60,6 +62,10 @@ export default class Product extends React.Component {
     const canBuy = user.points >= product.cost;
     return (
       <Layout name={user.name} points={user.points}>
+        <Head>
+          <title>{product.name}</title>
+        </Head>
+
         <Header title={product.name} />
         <ProductLayout>
           <PurchaseResume
