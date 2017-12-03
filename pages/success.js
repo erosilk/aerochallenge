@@ -15,6 +15,18 @@ export default class Success extends React.Component {
         console.log(query)
         const product = products.filter(product => product._id === query.id);
 
+        if (product.length === 0) {
+            if (res) {
+                res.writeHead(301, {
+                    Location: '/404',
+                });
+                res.end();
+                res.finished = true;
+            } else {
+                Router.replace('/404');
+            }
+        }
+
         return {
             product: product[0],
             userInfo: userInfo,

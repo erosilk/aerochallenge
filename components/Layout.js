@@ -7,6 +7,7 @@ const COLOR = constants.STYLE_VARS.colors;
 const Layout = styled.div`
   background: ${COLOR.bgColor};
   min-height: 100vh;
+  padding-bottom: 2em;
   display: flex;
   flex-direction: column;
   >*:not(:first-child) {
@@ -288,7 +289,7 @@ export default ({ user, children }) => (
       }
 
       p,
-      span {
+      span, h3 {
         color: #616161;
       }
 

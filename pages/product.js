@@ -41,6 +41,13 @@ export default class Product extends React.Component {
     this._redeemAction = this._redeemAction.bind(this);
   }
 
+  componentDidMount() {
+    const canBuy = this.props.userInfo.points >= this.props.product.cost;
+    canBuy
+      ? Router.prefetchRoute('/success?id=' + this.props.product._id)
+      : Router.prefetchRoute('/points');
+  }
+
   async _redeemAction(canBuy, product) {
     if (canBuy) {
       const redeem = await api.redeemProduct(product._id);
@@ -52,7 +59,7 @@ export default class Product extends React.Component {
       }
       Router.pushRoute('/success?id=' + this.props.product._id);
     } else {
-      api.addPoints(5000);
+      Router.pushRoute('/points');
     }
   }
 
