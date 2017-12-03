@@ -7,6 +7,7 @@ const STYLE_VARS = {
         white60: "rgba(255,255,255,.6)",
         orange: "#FF8800",
         cyan: "#0AD4FA",
+        cyan86: "",
         bgColor: "#F9F9F9",
         lightGray: "#EDEDED",
         grey: "#D9D9D9",

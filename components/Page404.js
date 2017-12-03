@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import constants from 'constants';
-import DiscreteButton from "./DiscreteButton"
+import DiscreteButton from './DiscreteButton';
 
 const COLOR = constants.STYLE_VARS.colors;
-
 
 const Container = styled.div`
   display: flex;
@@ -21,8 +20,22 @@ const Container = styled.div`
     height: 260px;
     width: 178px;
     margin: 0 auto;
+    animation: float 10s infinite;
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+      25% {
+        transform: translateY(-10px);
+      }
+      75% {
+        transform: translateY(10px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
   }
-  
 `;
 
 export default ({ redirect }) => {

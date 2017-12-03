@@ -31,6 +31,7 @@ const PointsBadge = styled.div`
   }
 `;
 
+// language=LESS
 const Item = styled.div`
   display: flex;
   position: relative;
@@ -79,6 +80,12 @@ const Item = styled.div`
     top: 1em;
     right: 1em;
     width: 30px;
+    height: 30px;
+    background: url('../../static/images/icons/buy-blue.svg');
+    background-size: contain;
+  }
+  .overlay {
+    display: none;
   }
 
   @media ${BREAKPOINT.smartphoneBig} {
@@ -86,6 +93,17 @@ const Item = styled.div`
     justify-content: center;
     align-items: center;
     max-width: 276px;
+
+    &:hover {
+      .buy {
+        background: url('../../static/images/icons/buy-white.svg');
+        background-size: contain;
+      }
+      .overlay {
+        display: flex;
+      }
+    }
+
     .img {
       border: none;
       border-bottom: 1px solid ${COLOR.grey};
@@ -96,7 +114,8 @@ const Item = styled.div`
       align-items: center;
     }
     .buy {
-      width: auto;
+      width: 42px;
+      height: 42px;
     }
     .text {
       margin: 0;
@@ -105,6 +124,45 @@ const Item = styled.div`
       > span:first-child {
         margin-bottom: 0.1em;
       }
+    }
+  }
+`;
+
+const Overlay = styled.div`
+  position: absolute;
+
+  background-image: linear-gradient(
+    -180deg,
+    rgba(10, 212, 250, 0.86) 0%,
+    rgba(37, 187, 241, 0.86) 100%
+  );
+
+  font-size: 2em;
+  color: white;
+
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInOverlay 0.3s;
+  @keyframes fadeInOverlay {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .points {
+    display: flex;
+    align-items: center;
+    img {
+      margin-left: 3px;
+      margin-top: 6px;
     }
   }
 `;
@@ -118,6 +176,12 @@ export default ({ product, pointsNeeded, onClick }) => (
       <span className={'category'}>{product.category}</span>
       <span className={'name'}>{product.name}</span>
     </div>
+    <Overlay className={'overlay'}>
+      <div className="points">
+        {product.cost}
+        <img src="../../static/images/icons/coin.svg" alt="" />
+      </div>
+    </Overlay>
     {pointsNeeded > 0 ? (
       <PointsBadge>
         You need {pointsNeeded}
@@ -128,11 +192,7 @@ export default ({ product, pointsNeeded, onClick }) => (
         />
       </PointsBadge>
     ) : (
-      <img
-        src="../static/images/icons/buy-blue.svg"
-        alt="Points"
-        className="buy badge"
-      />
+      <div className="buy badge" />
     )}
   </Item>
 );

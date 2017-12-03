@@ -33,6 +33,10 @@ export default ({ user, children }) => (
       * {
         box-sizing: border-box;
       }
+      *::selection {
+        color: white;
+        background-color: ${COLOR.darkGreyText};
+      }
       html {
         line-height: 1.15;
         -ms-text-size-adjust: 100%;
