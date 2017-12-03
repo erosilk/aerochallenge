@@ -22,8 +22,10 @@ const SuccessContainer = styled.div`
   }
   .img {
     border: 2px solid ${COLOR.orange};
-    max-width: 80%;
+    width: 80%;
     margin: 1em;
+    margin-bottom: 2em;
+    max-width: 362px;
   }
   img {
     width: 100%;

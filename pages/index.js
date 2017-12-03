@@ -56,12 +56,12 @@ export default class extends React.Component {
     const user = this.props.userInfo;
 
     return (
-      <Layout name={user.name} points={user.points}>
+      <Layout user={user}>
         <Head>
           <title>Aerolab Coding Challenge</title>
         </Head>
         <Header
-          background={'../../static/images/header-x1.png'}
+          background={'../../static/images/header-x1.jpg'}
           title={'Electronics'}
         />
         <Sorter options={this.sortOptions} current={this.state.sortBy} onClick={(id) => this.setState({sortBy: id})} />

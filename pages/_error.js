@@ -17,7 +17,7 @@ export default class Error extends React.Component {
     const user = this.props.userInfo;
 
     return (
-      <Layout name={user.name} points={user.points}>
+      <Layout user={user}>
         <Page404 redirect={() => Router.pushRoute('/')} />
       </Layout>
     );

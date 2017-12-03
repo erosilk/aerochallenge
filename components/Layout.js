@@ -2,7 +2,6 @@ import Top from './Top';
 import styled from 'styled-components';
 import constants from 'constants';
 
-
 const COLOR = constants.STYLE_VARS.colors;
 
 const Layout = styled.div`
@@ -10,13 +9,26 @@ const Layout = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  >*:not(:first-child) {
+    animation: fadeIn 1s;
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      100% {
+        opacity: 1;
+         transform: translateY(0px);
+      }
+    }
+  }
 `;
 
-export default ({ name, points, children }) => (
+export default ({ user, children }) => (
   <Layout>
-    <Top name={name} points={points} />
+    <Top history={user.redeemHistory} name={user.name} points={user.points} />
     {children}
-    <style jsx global>{`
+    <style global jsx>{`
       /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
       * {
         box-sizing: border-box;
@@ -290,7 +302,8 @@ export default ({ name, points, children }) => (
       body {
         margin: 0;
       }
-      p, span {
+      p,
+      span {
         font-family: 'Source Sans Pro';
         color: ${COLOR.darkGreyText};
       }

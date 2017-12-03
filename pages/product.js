@@ -61,7 +61,7 @@ export default class Product extends React.Component {
     const user = this.props.userInfo;
     const canBuy = user.points >= product.cost;
     return (
-      <Layout name={user.name} points={user.points}>
+      <Layout user={user}>
         <Head>
           <title>{product.name}</title>
         </Head>

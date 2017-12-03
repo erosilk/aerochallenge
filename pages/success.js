@@ -1,6 +1,8 @@
 import api from '../helpers/api';
 import { Router } from '../routes';
 
+import Head from 'next/head';
+
 import Layout from 'components/Layout';
 import Header from 'components/Header';
 import SuccessContainer from 'components/SuccessContainer';
@@ -24,7 +26,10 @@ export default class Success extends React.Component {
         const product = this.props.product;
         const user = this.props.userInfo;
         return (
-            <Layout name={user.name} points={user.points}>
+            <Layout user={user}>
+                <Head>
+                    <title>Purchase successful</title>
+                </Head>
                 <Header title={"Congrats!"} />
                 <SuccessContainer product={product} />
             </Layout>

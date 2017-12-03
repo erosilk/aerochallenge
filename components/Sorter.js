@@ -21,7 +21,9 @@ const SortContainer = styled.div`
   .categories {
     white-space: nowrap;
     span {
-      margin-right: 1em;
+      &:not(:last-child) {
+        margin-right: 1em;
+      }
       padding: 0.5em;
       border-radius: 1em;
       background: ${COLOR.lightGray};

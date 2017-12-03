@@ -20,6 +20,7 @@ const Barrilete = styled.img`
 `
 
 const UserData = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   color: ${COLOR.darkGreyText};
@@ -44,10 +45,24 @@ const Points = styled.div`
 `
 
 
-export default ({name, points}) => <HeaderContainer>
-    <Barrilete onClick={() => Router.pushRoute("/")} src={"../../static/images/aerolab-logo.svg"}/>
-    <UserData>
-        {name}
-        <Points>{points} <img src="../../static/images/icons/coin.svg" alt="Points" className="coin"/></Points>
-    </UserData>
-</HeaderContainer>
+export default class Top extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            visibleHistory: false
+        }
+    }
+
+    render() {
+        return (
+            <HeaderContainer>
+                <Barrilete onClick={() => Router.pushRoute("/")} src={"../../static/images/aerolab-logo.svg"}/>
+                <UserData>
+                    {this.props.name}
+                    <Points>{this.props.points} <img src="../../static/images/icons/coin.svg" alt="Points" className="coin"/></Points>
+                </UserData>
+            </HeaderContainer>
+        )
+    }
+}

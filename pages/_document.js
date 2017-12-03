@@ -22,6 +22,7 @@ export default class MyDocument extends Document {
                     content="width=device-width, initial-scale=1.0"
                 />
                 {this.props.styleTags}
+
                 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
 
                 <link rel="apple-touch-icon" sizes="180x180" href="/static/images/favicon/apple-touch-icon.png"/>
@@ -50,7 +51,7 @@ export default class MyDocument extends Document {
                 <meta property="fb:app_id" content=""/>
                 <meta property="og:title" content="Aerolab Coding Challenge"/>
                 <meta property="og:site_name" content="Aerolab Coding Challenge"/>
-                <meta property="og:url" content=" https://mezclas.sol.com.mx"/>
+                <meta property="og:url" content=""/>
                 <meta property="og:type" content="website"/>
                 <meta property="og:description" content="Canjeá tus puntos por productos copados!"/>
                 <meta property="og:locale " content="es_LA"/>
