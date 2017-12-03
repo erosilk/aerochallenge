@@ -8,11 +8,15 @@ const SortContainer = styled.div`
   height: 1em;
 
   margin: 2em auto;
-  padding-bottom: 2em;
-  margin-bottom: 0;
+  padding-bottom: 2.5em;
+  margin-bottom: 1em;
+
+  border-bottom: 1px solid lightgray;
+  width: calc(100% - 10vw);
 
   > span {
     margin-right: 0.5em;
+    white-space: nowrap;
   }
   .categories {
     white-space: nowrap;
