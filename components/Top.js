@@ -57,14 +57,12 @@ const Points = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.2em 0.5em;
+    padding: 0.4em 0.5em;
     background: ${COLOR.lightGray};
     border-radius: 50px;
     margin-left: 0.6em;
     .coin {
-        margin-right: -7px;
-        margin-bottom: -3px;
-        margin-left: 2px;
+        margin-left: 4px;
     }
 `
 

@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import constants from '../constants';
-import LazyLoad from 'react-lazyload';
-import { forceCheck } from 'react-lazyload';
-import { Link } from '../routes';
+import styled from "styled-components";
+import constants from "../constants";
+import LazyLoad from "react-lazyload";
+import { forceCheck } from "react-lazyload";
+import { Link } from "../routes";
 
 const COLOR = constants.STYLE_VARS.colors;
 const BREAKPOINT = constants.STYLE_VARS.breakpoints;
@@ -27,9 +27,7 @@ const PointsBadge = styled.div`
 
   @media ${BREAKPOINT.smartphoneBig} {
     .coin {
-      margin-right: -7px;
-      margin-bottom: -3px;
-      margin-left: 2px;
+      margin-left: 4px;
       width: auto;
     }
   }
@@ -83,17 +81,32 @@ const Item = styled.div`
     min-height: 80px;
     object-fit: contain;
   }
+  
   .buy {
+    display: none;
     position: absolute;
     top: 1em;
     right: 1em;
     width: 30px;
     height: 30px;
-    background: url('../../static/images/icons/buy-blue.svg');
+    background: url("../../static/images/icons/buy-blue.svg");
     background-size: contain;
   }
   .overlay {
     display: none;
+  }
+
+  .mobilecost {
+    display: flex;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 30px;
+      margin-left: 0.3em;
+    }
   }
 
   @media ${BREAKPOINT.tabletPort} {
@@ -101,10 +114,18 @@ const Item = styled.div`
     justify-content: center;
     align-items: center;
     max-width: 276px;
+    
+    .buy {
+      display: block;
+    }
+    
+    .mobilecost {
+      display: none;
+    }
 
     &:hover {
       .buy {
-        background: url('../../static/images/icons/buy-white.svg');
+        background: url("../../static/images/icons/buy-white.svg");
         background-size: contain;
       }
       .overlay {
@@ -144,12 +165,19 @@ const Item = styled.div`
 
 const Overlay = styled.div`
   position: absolute;
-
-  background-image: linear-gradient(
-    -180deg,
-    rgba(10, 212, 250, 0.86) 0%,
-    rgba(37, 187, 241, 0.86) 100%
-  );
+  display: flex;
+  flex-direction: column;
+  .button {
+    font-size: 0.6em;
+    color: ${COLOR.darkGreyText};
+    background: white;
+    padding: 0.45em 0;
+    text-align: center;
+    width: 80%;
+    margin: 0.5em 0;
+    border-radius: 40px;
+  }
+  background-image: linear-gradient(-180deg, rgba(10, 212, 250, 0.86) 0%, rgba(37, 187, 241, 0.86) 100%);
 
   border-radius: 3px;
 
@@ -176,8 +204,9 @@ const Overlay = styled.div`
   .points {
     display: flex;
     align-items: center;
+    margin-top: 0.8em;
     img {
-      margin-left: 3px;
+      margin-left: 5px;
       margin-top: 6px;
     }
   }
@@ -194,34 +223,32 @@ export default class extends React.Component {
         <Item onClick={this.props.onClick}>
           <div className="img">
             <LazyLoad height={80} offset={280}>
-              <img
-                className={'product'}
-                src={this.props.product.img.url}
-                alt={this.props.product.name}
-              />
+              <img className={"product"} src={this.props.product.img.url} alt={this.props.product.name} />
             </LazyLoad>
           </div>
           <div className="text">
-            <span className={'category'}>{this.props.product.category}</span>
-            <span className={'name'}>{this.props.product.name}</span>
+            <span className={"category"}>{this.props.product.category}</span>
+            <span className={"name"}>{this.props.product.name}</span>
           </div>
-          <Overlay className={'overlay'}>
+          <Overlay className={"overlay"}>
             <div className="points">
               {this.props.product.cost}
-              <img src="../../static/images/icons/coin.svg" alt="" />
+              <img src="../../static/images/icons/coin.svg" alt="points" />
             </div>
+            <div className="button">Redeem now</div>
           </Overlay>
           {this.props.pointsNeeded > 0 ? (
             <PointsBadge>
               You need {this.props.pointsNeeded}
-              <img
-                src="../static/images/icons/coin.svg"
-                alt="Points"
-                className="coin"
-              />
+              <img src="../static/images/icons/coin.svg" alt="Points" className="points" />
             </PointsBadge>
           ) : (
-            <div className="buy badge" />
+            <div>
+              <div className="mobilecost">
+                <span>{this.props.product.cost}</span> <img src="../../static/images/icons/coin.svg" alt="points" />
+              </div>{" "}
+              <div className="buy badge" />
+            </div>
           )}
         </Item>
       </Link>
