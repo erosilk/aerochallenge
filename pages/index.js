@@ -55,6 +55,7 @@ export default class extends React.Component {
       : this.props.products;
     const user = this.props.userInfo;
 
+
     return (
       <Layout user={user}>
         <Head>

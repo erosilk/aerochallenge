@@ -1,10 +1,14 @@
-const next = require('next')
-const routes = require('./routes')
-const app = next({dev: process.env.NODE_ENV !== 'production'})
-const handler = routes.getRequestHandler(app)
+const next = require('next');
+const routes = require('./routes');
+const app = next({ dev: process.env.NODE_ENV !== 'production' });
+const handler = routes.getRequestHandler(app);
+const compression = require('compression');
 
-const {createServer} = require('http')
+const express = require('express');
 
 app.prepare().then(() => {
-    createServer(handler).listen(3000)
-})
+  express()
+    .use(handler)
+    .use(compression())
+    .listen(3000);
+});

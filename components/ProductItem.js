@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import constants from '../constants';
+import LazyLoad from 'react-lazyload';
+import {forceCheck} from 'react-lazyload';
 
 const COLOR = constants.STYLE_VARS.colors;
 const BREAKPOINT = constants.STYLE_VARS.breakpoints;
@@ -21,6 +23,7 @@ const PointsBadge = styled.div`
     margin-left: 2px;
     width: 20px;
   }
+
   @media ${BREAKPOINT.smartphoneBig} {
     .coin {
       margin-right: -7px;
@@ -31,7 +34,6 @@ const PointsBadge = styled.div`
   }
 `;
 
-// language=LESS
 const Item = styled.div`
   display: flex;
   position: relative;
@@ -39,6 +41,8 @@ const Item = styled.div`
   background: ${COLOR.white};
   align-items: flex-end;
   padding: 1em;
+
+  border-radius: 3px;
 
   max-width: 340px;
   margin: auto;
@@ -51,6 +55,9 @@ const Item = styled.div`
   &:hover {
     box-shadow: -1px 2px 7px 0px #00000044;
     transform: scale(1.03);
+  }
+  .loading {
+    transform: scale(0.3);
   }
   .text {
     display: flex;
@@ -88,7 +95,7 @@ const Item = styled.div`
     display: none;
   }
 
-  @media ${BREAKPOINT.smartphoneBig} {
+  @media ${BREAKPOINT.tabletPort} {
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -102,6 +109,9 @@ const Item = styled.div`
       .overlay {
         display: flex;
       }
+
+      box-shadow: -1px 6px 20px 2px #00000030;
+      transform: scale(1.05) translateY(-7px);
     }
 
     .img {
@@ -112,6 +122,9 @@ const Item = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+    img {
+      height: 100%;
     }
     .buy {
       width: 42px;
@@ -136,6 +149,8 @@ const Overlay = styled.div`
     rgba(10, 212, 250, 0.86) 0%,
     rgba(37, 187, 241, 0.86) 100%
   );
+
+  border-radius: 3px;
 
   font-size: 2em;
   color: white;
@@ -167,32 +182,44 @@ const Overlay = styled.div`
   }
 `;
 
-export default ({ product, pointsNeeded, onClick }) => (
-  <Item onClick={onClick}>
-    <div className="img">
-      <img className={'product'} src={product.img.url} alt={product.name} />
-    </div>
-    <div className="text">
-      <span className={'category'}>{product.category}</span>
-      <span className={'name'}>{product.name}</span>
-    </div>
-    <Overlay className={'overlay'}>
-      <div className="points">
-        {product.cost}
-        <img src="../../static/images/icons/coin.svg" alt="" />
-      </div>
-    </Overlay>
-    {pointsNeeded > 0 ? (
-      <PointsBadge>
-        You need {pointsNeeded}
-        <img
-          src="../static/images/icons/coin.svg"
-          alt="Points"
-          className="coin"
-        />
-      </PointsBadge>
-    ) : (
-      <div className="buy badge" />
-    )}
-  </Item>
-);
+export default class extends React.Component {
+
+    componentDidUpdate() {
+        forceCheck();
+    }
+
+    render() {
+
+        return (
+            <Item onClick={this.props.onClick}>
+                <div className="img">
+                    <LazyLoad height={80} offset={280}>
+                        <img className={'product'} src={this.props.product.img.url} alt={this.props.product.name} />
+                    </LazyLoad>
+                </div>
+                <div className="text">
+                    <span className={'category'}>{this.props.product.category}</span>
+                    <span className={'name'}>{this.props.product.name}</span>
+                </div>
+                <Overlay className={'overlay'}>
+                    <div className="points">
+                        {this.props.product.cost}
+                        <img src="../../static/images/icons/coin.svg" alt="" />
+                    </div>
+                </Overlay>
+                {this.props.pointsNeeded > 0 ? (
+                    <PointsBadge>
+                        You need {this.props.pointsNeeded}
+                        <img
+                            src="../static/images/icons/coin.svg"
+                            alt="Points"
+                            className="coin"
+                        />
+                    </PointsBadge>
+                ) : (
+                    <div className="buy badge" />
+                )}
+            </Item>
+        )
+    }
+}
