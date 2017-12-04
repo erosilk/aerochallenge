@@ -1,13 +1,13 @@
-import api from '../helpers/api';
-import { Router } from '../routes';
+import api from "../helpers/api";
+import { Router } from "../routes";
 
-import Head from 'next/head';
+import Head from "next/head";
 
-import Layout from 'components/Layout';
-import Header from 'components/Header';
-import PurchaseResume from 'components/PurchaseResume';
-import RedeemButton from 'components/RedeemButton';
-import ProductLayout from 'components/ProductLayout';
+import Layout from "components/Layout";
+import Header from "components/Header";
+import PurchaseResume from "components/PurchaseResume";
+import RedeemButton from "components/RedeemButton";
+import ProductLayout from "components/ProductLayout";
 
 export default class Product extends React.Component {
   static async getInitialProps({ query, req, res }) {
@@ -21,12 +21,12 @@ export default class Product extends React.Component {
     if (product.length === 0) {
       if (res) {
         res.writeHead(301, {
-          Location: '/404',
+          Location: "/404",
         });
         res.end();
         res.finished = true;
       } else {
-        Router.replace('/404');
+        Router.replace("/404");
       }
     }
 
@@ -43,23 +43,19 @@ export default class Product extends React.Component {
 
   componentDidMount() {
     const canBuy = this.props.userInfo.points >= this.props.product.cost;
-    canBuy
-      ? Router.prefetchRoute('/success?id=' + this.props.product._id)
-      : Router.prefetchRoute('/points');
+    canBuy ? Router.prefetchRoute("/success?id=" + this.props.product._id) : Router.prefetchRoute("/points");
   }
 
   async _redeemAction(canBuy, product) {
     if (canBuy) {
       const redeem = await api.redeemProduct(product._id);
       if (redeem.error) {
-        alert(
-          'There has been an issue with your purchase. Suspicious behavior. NSA is on their way.',
-        );
+        alert("There has been an issue with your purchase. Suspicious behavior. NSA is on their way.");
         return;
       }
-      Router.pushRoute('/success?id=' + this.props.product._id);
+      Router.pushRoute("/success?id=" + this.props.product._id);
     } else {
-      Router.pushRoute('/points');
+      Router.pushRoute("/points");
     }
   }
 
@@ -75,23 +71,9 @@ export default class Product extends React.Component {
 
         <Header title={product.name} />
         <ProductLayout>
-          <PurchaseResume
-            canBuy={canBuy}
-            userPoints={user.points}
-            costOfProduct={product.cost}
-          />
+          <PurchaseResume canBuy={canBuy} userPoints={user.points} costOfProduct={product.cost} />
           <div>
-            {canBuy ? (
-              <img
-                src="https://media.giphy.com/media/uFtywzELtkFzi/giphy.gif"
-                alt=""
-              />
-            ) : (
-              <img
-                src="https://media.giphy.com/media/3o6UB5RrlQuMfZp82Y/giphy.gif"
-                alt=""
-              />
-            )}
+            <img src={product.img.url} className={"productimg"} alt="" />
 
             <RedeemButton
               onClick={() => {

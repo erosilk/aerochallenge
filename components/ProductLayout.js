@@ -15,6 +15,9 @@ const Container = styled.div`
   img {
     display: none;
   }
+  .productimg {
+    object-fit: contain;
+  }
   @media ${BREAKPOINT.tabletLand} {
     flex-direction: row;
     align-items: flex-end;
