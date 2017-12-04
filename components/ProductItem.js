@@ -14,20 +14,20 @@ const PointsBadge = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.2em 0.5em;
+  padding: 0.3em 0.5em;
   background: ${COLOR.darkGrey80};
   border-radius: 50px;
   color: ${COLOR.white};
   .coin {
-    margin-right: -7px;
-    margin-bottom: -2px;
     margin-left: 2px;
+
     width: 20px;
   }
 
   @media ${BREAKPOINT.smartphoneBig} {
+    padding: 0.4em 0.5em;
     .coin {
-      margin-left: 4px;
+      margin-left: 5px;
       width: auto;
     }
   }
@@ -81,7 +81,7 @@ const Item = styled.div`
     min-height: 80px;
     object-fit: contain;
   }
-  
+
   .buy {
     display: none;
     position: absolute;
@@ -91,6 +91,7 @@ const Item = styled.div`
     height: 30px;
     background: url("../../static/images/icons/buy-blue.svg");
     background-size: contain;
+    z-index: 2;
   }
   .overlay {
     display: none;
@@ -114,11 +115,11 @@ const Item = styled.div`
     justify-content: center;
     align-items: center;
     max-width: 276px;
-    
+
     .buy {
       display: block;
     }
-    
+
     .mobilecost {
       display: none;
     }
@@ -166,17 +167,7 @@ const Item = styled.div`
 const Overlay = styled.div`
   position: absolute;
   display: flex;
-  flex-direction: column;
-  .button {
-    font-size: 0.6em;
-    color: ${COLOR.darkGreyText};
-    background: white;
-    padding: 0.45em 0;
-    text-align: center;
-    width: 80%;
-    margin: 0.5em 0;
-    border-radius: 40px;
-  }
+
   background-image: linear-gradient(-180deg, rgba(10, 212, 250, 0.86) 0%, rgba(37, 187, 241, 0.86) 100%);
 
   border-radius: 3px;
@@ -204,7 +195,6 @@ const Overlay = styled.div`
   .points {
     display: flex;
     align-items: center;
-    margin-top: 0.8em;
     img {
       margin-left: 5px;
       margin-top: 6px;
@@ -230,17 +220,11 @@ export default class extends React.Component {
             <span className={"category"}>{this.props.product.category}</span>
             <span className={"name"}>{this.props.product.name}</span>
           </div>
-          <Overlay className={"overlay"}>
-            <div className="points">
-              {this.props.product.cost}
-              <img src="../../static/images/icons/coin.svg" alt="points" />
-            </div>
-            <div className="button">Redeem now</div>
-          </Overlay>
+
           {this.props.pointsNeeded > 0 ? (
-            <PointsBadge>
+            <PointsBadge className={"pointsBadge"}>
               You need {this.props.pointsNeeded}
-              <img src="../static/images/icons/coin.svg" alt="Points" className="points" />
+              <img src="../static/images/icons/coin.svg" alt="Points" className="coin" />
             </PointsBadge>
           ) : (
             <div>
@@ -250,6 +234,12 @@ export default class extends React.Component {
               <div className="buy badge" />
             </div>
           )}
+          <Overlay className={"overlay"}>
+            <div className="points">
+              {this.props.product.cost}
+              <img src="../../static/images/icons/coin.svg" alt="points" />
+            </div>
+          </Overlay>
         </Item>
       </Link>
     );
