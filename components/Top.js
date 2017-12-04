@@ -9,13 +9,13 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   height: 80px;
-  background: ${COLOR.white}
+  background: ${COLOR.white};
+  padding: 0 5vw;
 `
 
 const Barrilete = styled.img`
   height: 36px;
   width: 38.77px;
-  margin-left: 5vw;
   cursor: pointer;
 `
 
@@ -35,13 +35,12 @@ const Points = styled.div`
     padding: 0.2em 0.5em;
     background: ${COLOR.lightGray};
     border-radius: 50px;
-    margin: 0 0.6em;
+    margin-left: 0.6em;
     .coin {
         margin-right: -7px;
         margin-bottom: -3px;
         margin-left: 2px;
     }
-    margin-right: 5vw;
 `
 
 

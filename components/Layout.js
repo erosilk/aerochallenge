@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import constants from 'constants';
 
 const COLOR = constants.STYLE_VARS.colors;
+const BREAKPOINT = constants.STYLE_VARS.breakpoints;
 
 const Layout = styled.div`
   background: ${COLOR.bgColor};
@@ -22,6 +23,9 @@ const Layout = styled.div`
         transform: translateY(0px);
       }
     }
+  }
+  @media ${BREAKPOINT.tabletLand} {
+    font-size: 18px;
   }
 `;
 
