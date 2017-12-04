@@ -20,7 +20,7 @@ const Container = styled.div`
     align-items: flex-end;
     img {
       display: block;
-      height: 155px;
+      height: 157px;
       width: 280px;
       margin-bottom: 1em;
     }

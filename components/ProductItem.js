@@ -156,8 +156,8 @@ const Overlay = styled.div`
   font-size: 2em;
   color: white;
 
-  width: 100%;
-  height: 100%;
+  width: calc(100% + 1px);
+  height: calc(100% + 1px);
   top: 0;
   left: 0;
   display: flex;

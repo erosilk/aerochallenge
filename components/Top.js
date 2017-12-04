@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import constants from 'constants'
+import PurchaseHistory from './PurchaseHistory'
 import { Link } from '../routes';
 
 const COLOR = constants.STYLE_VARS.colors
@@ -26,6 +27,30 @@ const UserData = styled.div`
   color: ${COLOR.darkGreyText};
   font-size: 1em;
   text-align: right;
+  > span {
+    cursor: pointer;
+    position: relative;
+    &:hover:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background: ${COLOR.orange};
+      bottom: -2px;
+      left: 0;
+      animation: expand 0.2s;
+      @keyframes expand {
+        0% {
+          width: 0;
+          margin-left: 50%;
+        }
+        100% {
+          width: 100%;
+          margin-left: 0%;
+        }
+      }
+    }
+  }
 `
 
 const Points = styled.div`
@@ -60,8 +85,11 @@ export default class Top extends React.Component {
                     <Barrilete src={"../../static/images/aerolab-logo.svg"}/>
                 </Link>
                 <UserData>
-                    {this.props.name}
+                    <span onClick={() => this.setState((prevState) => {return {visibleHistory:!prevState.visibleHistory}})}>{this.props.name}</span>
                     <Points>{this.props.points} <img src="../../static/images/icons/coin.svg" alt="Points" className="coin"/></Points>
+                  {
+                    this.state.visibleHistory ? <PurchaseHistory history={this.props.history}/> : null
+                  }
                 </UserData>
             </HeaderContainer>
         )

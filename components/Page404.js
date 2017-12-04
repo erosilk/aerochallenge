@@ -10,11 +10,12 @@ const Container = styled.div`
   padding: 1em;
   justify-content: center;
   align-content: center;
-  min-height: 500px;
+  min-height: 80vh;
   h1 {
     color: ${COLOR.orange};
     text-align: center;
     font-size: 2em;
+    margin: 1em;
   }
   img {
     height: 260px;

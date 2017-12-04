@@ -21,7 +21,7 @@ const SuccessContainer = styled.div`
     font-size: 1.1em;
   }
   .img {
-    border: 2px solid ${COLOR.orange};
+    border: 1px solid ${COLOR.orange};
     width: 80%;
     margin: 1em;
     margin-bottom: 2em;

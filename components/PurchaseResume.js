@@ -14,7 +14,7 @@ const ResumeContainer = styled.div`
   flex-direction: column;
   width: 90%;
   max-width: 460px;
-  height: 220px;
+  height: 235px;
   justify-content: space-around;
   margin-bottom: 1em;
   @media ${BREAKPOINT.tabletLand} {
