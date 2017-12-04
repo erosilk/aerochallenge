@@ -28,7 +28,7 @@ const ButtonContainer = styled.div`
 export default ({ canBuy, onClick }) => {
   return (
     <ButtonContainer onClick={onClick}>
-      {canBuy ? <p>Get this product</p> : <p>GO GET SUM POINTS !1 !</p>}
+      {canBuy ? <p>Redeem now</p> : <p>GO GET SUM POINTS !1 !</p>}
     </ButtonContainer>
   );
 };
