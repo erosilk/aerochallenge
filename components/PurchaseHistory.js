@@ -7,7 +7,9 @@ const COLOR = constants.STYLE_VARS.colors;
 
 const HistoryContainer = styled.div`
   position: absolute;
-  width: 300px;
+  width: 80vw;
+  max-width: 300px;
+  z-index: 2;
   right: 0;
   top: 50px;
   height: 310px;
