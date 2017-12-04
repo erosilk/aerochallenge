@@ -12,9 +12,9 @@ const ButtonContainer = styled.div`
   border-radius: 50px;
   cursor: pointer;
   transition: 0.15s ease all;
-  
+
   &:hover {
-    box-shadow: -5px 8px #00000014;
+    box-shadow: -1px 2px 7px 0px #00000014;
     background: #dc7103;
   }
   p {

@@ -30,7 +30,7 @@ export default class extends React.Component {
       { id: 'lowestPrice', name: 'Lowest Price' },
     ];
     this.state = {
-      sortBy: 'recent'
+      sortBy: 'recent',
     };
   }
 
@@ -55,7 +55,6 @@ export default class extends React.Component {
       : this.props.products;
     const user = this.props.userInfo;
 
-
     return (
       <Layout user={user}>
         <Head>
@@ -65,20 +64,20 @@ export default class extends React.Component {
           background={'../../static/images/header-x1.jpg'}
           title={'Electronics'}
         />
-        <Sorter options={this.sortOptions} current={this.state.sortBy} onClick={(id) => this.setState({sortBy: id})} />
+        <Sorter
+          options={this.sortOptions}
+          current={this.state.sortBy}
+          onClick={id => this.setState({ sortBy: id })}
+        />
         <ItemContainer>
           {this.props.products.map(product => (
             <ProductItem
               key={product._id}
               pointsNeeded={product.cost - user.points}
               product={product}
-              onClick={() =>
-                Router.pushRoute(
-                  `/product/${product._id}/${product.name
-                    .split(' ')
-                    .join('')} `,
-                )
-              }
+              route={`/product/${product._id}/${product.name
+                .split(' ')
+                .join('')} `}
             />
           ))}
         </ItemContainer>

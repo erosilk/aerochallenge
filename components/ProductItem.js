@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import constants from '../constants';
 import LazyLoad from 'react-lazyload';
-import {forceCheck} from 'react-lazyload';
+import { forceCheck } from 'react-lazyload';
+import { Link } from '../routes';
 
 const COLOR = constants.STYLE_VARS.colors;
 const BREAKPOINT = constants.STYLE_VARS.breakpoints;
@@ -183,43 +184,47 @@ const Overlay = styled.div`
 `;
 
 export default class extends React.Component {
+  componentDidUpdate() {
+    forceCheck();
+  }
 
-    componentDidUpdate() {
-        forceCheck();
-    }
-
-    render() {
-
-        return (
-            <Item onClick={this.props.onClick}>
-                <div className="img">
-                    <LazyLoad height={80} offset={280}>
-                        <img className={'product'} src={this.props.product.img.url} alt={this.props.product.name} />
-                    </LazyLoad>
-                </div>
-                <div className="text">
-                    <span className={'category'}>{this.props.product.category}</span>
-                    <span className={'name'}>{this.props.product.name}</span>
-                </div>
-                <Overlay className={'overlay'}>
-                    <div className="points">
-                        {this.props.product.cost}
-                        <img src="../../static/images/icons/coin.svg" alt="" />
-                    </div>
-                </Overlay>
-                {this.props.pointsNeeded > 0 ? (
-                    <PointsBadge>
-                        You need {this.props.pointsNeeded}
-                        <img
-                            src="../static/images/icons/coin.svg"
-                            alt="Points"
-                            className="coin"
-                        />
-                    </PointsBadge>
-                ) : (
-                    <div className="buy badge" />
-                )}
-            </Item>
-        )
-    }
+  render() {
+    return (
+      <Link route={this.props.route}>
+        <Item onClick={this.props.onClick}>
+          <div className="img">
+            <LazyLoad height={80} offset={280}>
+              <img
+                className={'product'}
+                src={this.props.product.img.url}
+                alt={this.props.product.name}
+              />
+            </LazyLoad>
+          </div>
+          <div className="text">
+            <span className={'category'}>{this.props.product.category}</span>
+            <span className={'name'}>{this.props.product.name}</span>
+          </div>
+          <Overlay className={'overlay'}>
+            <div className="points">
+              {this.props.product.cost}
+              <img src="../../static/images/icons/coin.svg" alt="" />
+            </div>
+          </Overlay>
+          {this.props.pointsNeeded > 0 ? (
+            <PointsBadge>
+              You need {this.props.pointsNeeded}
+              <img
+                src="../static/images/icons/coin.svg"
+                alt="Points"
+                className="coin"
+              />
+            </PointsBadge>
+          ) : (
+            <div className="buy badge" />
+          )}
+        </Item>
+      </Link>
+    );
+  }
 }

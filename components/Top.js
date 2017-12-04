@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import constants from 'constants'
-import {Router} from '../routes'
+import { Link } from '../routes';
 
 const COLOR = constants.STYLE_VARS.colors
 
@@ -57,7 +57,9 @@ export default class Top extends React.Component {
     render() {
         return (
             <HeaderContainer>
-                <Barrilete onClick={() => Router.pushRoute("/")} src={"../../static/images/aerolab-logo.svg"}/>
+                <Link route={"/"}>
+                    <Barrilete src={"../../static/images/aerolab-logo.svg"}/>
+                </Link>
                 <UserData>
                     {this.props.name}
                     <Points>{this.props.points} <img src="../../static/images/icons/coin.svg" alt="Points" className="coin"/></Points>
