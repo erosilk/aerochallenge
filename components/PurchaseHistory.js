@@ -8,7 +8,7 @@ const COLOR = constants.STYLE_VARS.colors;
 const HistoryContainer = styled.div`
   position: absolute;
   width: 80vw;
-  max-width: 300px;
+  max-width: 340px;
   z-index: 2;
   right: 0;
   top: 50px;
