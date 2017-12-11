@@ -1,5 +1,6 @@
-# Aerolab Coding Challenge (Still WIP)
-  
+# Aerolab Coding Challenge 
+
+
 ### Built with:
 - Next ( & Next Routes )
 - Styled Components

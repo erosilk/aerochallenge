@@ -8,7 +8,7 @@ const COLOR = constants.STYLE_VARS.colors;
 const HistoryContainer = styled.div`
   position: absolute;
   width: 80vw;
-  max-width: 300px;
+  max-width: 340px;
   z-index: 2;
   right: 0;
   top: 50px;
@@ -18,6 +18,9 @@ const HistoryContainer = styled.div`
   padding: 1em;
   border-radius: 3px;
   box-shadow: -1px 2px 7px 0px #00000014;
+  
+  
+  
   animation: purchaseHistory 0.3s;
   @keyframes purchaseHistory {
     0% {
@@ -33,7 +36,10 @@ const HistoryContainer = styled.div`
   .row {
     display: flex;
     justify-content: space-between;
-    margin: 0.8em 0;
+    padding: 0.3em 0;
+    &:nth-child(odd) {
+      background: #fff7f2; ;
+    }
   }
   .history {
     height: 100%;
@@ -59,6 +65,7 @@ const HistoryContainer = styled.div`
   a {
     color: ${COLOR.darkGreyText};
     text-decoration: none;
+    text-align: left;
   }
 `;
 
