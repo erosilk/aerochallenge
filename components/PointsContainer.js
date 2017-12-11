@@ -20,6 +20,12 @@ const Container = styled.div`
   img {
     width: 100%;
   }
+  
+  .getPoints {
+    > * {
+      margin: 1em 0;
+    }
+  }
  
   
   @media ${BREAKPOINT.tabletLand} {
@@ -47,7 +53,7 @@ export default ({ currentPoints, addPoints }) => {
   return (
     <Container>
       {currentPoints <= 2500 ? (
-        <div>
+        <div className={"getPoints"}>
           <h3>Hey! Seems like you need some points.</h3>
           <p>
             Well, good news.<br />
